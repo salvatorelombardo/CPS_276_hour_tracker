@@ -27,7 +27,7 @@ require_once 'server/pageRoutes.php';
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt-5">
-                <h1>
+                <h1 class="text-center">
                     <?php echo $pageData['heading'] ?>
                 </h1>
             </div>
@@ -64,6 +64,19 @@ require_once 'server/pageRoutes.php';
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
+    <?php 
+
+    $jsFilesArray=explode('^',$pageData['js']);
+    $i=0;
+    $js="";
+    while($i<count($jsFilesArray)){
+        $js .="<script src=".$pageData['base']."public/js/".$jsFilesArray[$i].".js></script>";
+        $i++;
+
+    }
+    echo $js;
+
+    ?>
 </body>
 
 </html>
