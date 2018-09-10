@@ -17,8 +17,8 @@ $baseURL = "http://104.248.51.242/CPS_276_hour_tracker/";
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=<?php echo '"' .$baseURL.'add_view_hours/">'; ?>Add &amp; View
-                                Hours <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href=<?php echo '"' .$baseURL.'addViewHours/"'; ?>>Add
+                                &amp; View Hours <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Logout</a>
@@ -29,3 +29,6 @@ $baseURL = "http://104.248.51.242/CPS_276_hour_tracker/";
         </nav>
     </div>
 </div>
+
+
+<!-- http://104.248.51.242/CPS_276_hour_tracker/ -->

@@ -25,10 +25,10 @@ login.submit = function () {
         Util.msgBox({
             heading: {
                 text: 'Error',
-                'red'
+                background: 'red'
             },
             body: {
-                text: 'Email and passwordcannot be blank'
+                text: 'Email and password cannot be blank'
             },
             rightbtn: {
                 text: 'Okay',
