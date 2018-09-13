@@ -22,3 +22,9 @@ function(obj){
 
     blahblah = obj.property.property
 }
+
+
+
+skin project first - then write in js and backend
+attack css through classes
+
