@@ -63,6 +63,8 @@
     outline: none;
 }
 
-#msgBox .box .body #leftbtn {
+#msgBox .box .body #leftbtn,
+#msgBox .box .body #rightbtn {
     margin: 0 5px 0 0;
+    display: none
 }

@@ -24,6 +24,9 @@ la.login = function (e) {
                 text: 'Okay',
                 background: 'green',
                 display: 'block'
+            },
+            leftbtn: {
+                display: 'none'
             }
         })
         Util.addLis(Util.getEl('#rightbtn')[0], 'click', function () {
@@ -56,7 +59,8 @@ la.login = function (e) {
                     },
                     body: {
                         text: response.msg
-                    }
+                    },
+
                 })
 
                 setTimeout(function () {

@@ -18,8 +18,8 @@ function console_log( $data ){
 
 
 switch($dataObj->flag){
-    case 'logi':require '../controller/login.php'; login($dataObj); break;
-    case 'addViewHours':require '../controller/add_view_hours.php'; addViewHours($dataObj);break;
+    case 'login':require '../controller/login.php'; login($dataObj); break;
+    case 'addViewHours':require '../controller/add_view_hours.php'; addHours($dataObj);break;
 }
 
 ?>
