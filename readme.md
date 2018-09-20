@@ -28,3 +28,15 @@ function(obj){
 skin project first - then write in js and backend
 attack css through classes
 
+
+**Adding to the database**
+
+Classes are used to create the general and pdo methods - create the class once and reuse constantly
+
+-sql statement values ':'colon is used to bind data and let server know it can reuse the same execution plan (BIND VARIABLE)
+
+--element names are bound to the dataObj->element[i]->id
+            element names are the same as the variable used in the values section of sql statement
+
+
+

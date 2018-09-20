@@ -7,13 +7,13 @@ $file = $_FILES;
 
 $dataObj = json_decode($dataObj);
 
-function console_log( $data ){
+/*function console_log( $data ){
     echo '<script>';
     echo 'console.log('. json_encode( $data ) .')';
     echo '</script>';
   }
 
-  console_log($dataObj);
+  console_log($dataObj);*/
 
 
 

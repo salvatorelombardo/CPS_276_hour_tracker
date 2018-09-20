@@ -19,12 +19,12 @@ ac.addViewHours = function () {
 
     data.elements = [{
         id: 'jobDate',
-        regex: 'timestamp',
+        regex: 'dateFormat',
         msg: 'You must select a date',
         status: 'checking',
     }, {
         id: 'hours',
-        regex: 'hours',
+        regex: 'job_hours',
         msg: 'You must enter the hours.  Use a decimal for partial hours (ex 1 and 1/2 hours is 1.5)',
         status: 'checking'
     }, {
@@ -48,6 +48,7 @@ ac.addViewHours = function () {
 
     data = JSON.stringify(data);
 
+    // console.log(data);
 
     Util.sendRequest('../xhr/routes.php', function (res) {
 

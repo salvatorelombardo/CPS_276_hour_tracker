@@ -52,8 +52,8 @@ class General {
 						
 		/* THIS WILL CREATE THE SQL COMMAND AND THE BINDINGS ARRAY NEEDED FOR THE PDO REQUEST */
 		switch($table){
-			case 'account' : $sql = "SELECT name FROM account WHERE name = :name";$bindings = array(array(':name', $duplicateValue,'str')); break;
-			case 'contact' : $sql = "SELECT email FROM contact WHERE email = :email";$bindings = array(array(':email', $duplicateValue,'str')); break;
+			// case 'account' : $sql = "SELECT name FROM account WHERE name = :name";$bindings = array(array(':name', $duplicateValue,'str')); break;
+			// case 'contact' : $sql = "SELECT email FROM contact WHERE email = :email";$bindings = array(array(':email', $duplicateValue,'str')); break;
 			case 'job' : $sql = "SELECT name FROM job WHERE name = :name";$bindings = array(array(':name', $duplicateValue,'str')); break;
 		}
 
