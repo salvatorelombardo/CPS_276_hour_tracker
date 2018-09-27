@@ -52,7 +52,7 @@ class Validation {
 	}
 
 	private function alphaNum($value){
-	  $regex = '/^[a-z0-9]+$/i';
+	  $regex = '/^[a-z0-9]+$/i';	
 	  return preg_match($regex, $value);
 	}
 

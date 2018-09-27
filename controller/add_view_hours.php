@@ -33,8 +33,10 @@ function addHours($dataObj){
 		}
 		$i++;
 	}
-	
-	if($error){
+
+
+
+    if($error){
 
        
 		$dataObj->masterstatus = 'fielderrors';
@@ -57,19 +59,19 @@ function addHours($dataObj){
 
         $bindings = $General->createBindedArray($elementNames, $dataObj);
 
-        return;
+        // return;
         // $data = json_encode($bindings);
         // $dataObj = json_encode($dataObj);
         // echo $data . $dataObj;
         $result = $pdo->otherBinded($sql, $bindings);
 
 
-        $data = json_encode($result);
+        // $data = json_encode($result);
         // $dataObj = json_encode($dataObj);
-        echo $data;
+        // echo $data;
 
 
-        return;
+        // return;
 
 
         if($result = 'noerror'){
@@ -77,7 +79,13 @@ function addHours($dataObj){
                 'masterstatus' => 'success',
                 'msg' => 'The account has been added',
             ];
-            echo json_encode($response);
+
+
+            // $sql = "SELECT * FROM hour_log"
+            // echo json_encode($response);
+
+
+            viewHoursTable('getJobHourTable');
 
         }
         else {
@@ -88,9 +96,104 @@ function addHours($dataObj){
             echo json_encode($response);
         }
 
-        return;
+        // return;
 
     }   
 }
+
+
+function viewHoursTable($dataObj){
+
+    require_once '../classes/Pdo_methods.php';
+    require_once '../classes/General.php';
+    
+
+    //   $General = new General();
+        $pdo = new PdoMethods();
+        
+        // $sql = "SELECT * FROM hour_log (job_date, job_hours, description) VALUES (:jobDate, :hours, :description)";
+        $sql = "SELECT id , job_date , job_hours , description FROM hour_log";
+
+        $records = $pdo->selectNotBinded($sql);
+       
+
+            if($records == 'error'){
+                echo 'There has been and error processing your request';
+            }else{
+
+            if(count($records!=0)){
+
+                $table="";
+
+            $table.='<table id="editDeleteTable" class="table table-hover table-sm table-striped">';
+                    $table.='<figure>Hour Tracker</figure><thead><tr><th style="width:45%">Description</th><th>Job Date</th><th>Job Hours</th><th>Edit Hours</th><th>Delete Hours</th></tr></thead><tbody>';
+
+                    foreach($records as $row){
+
+                        $table.="<tr><td> ".$row["description"]."</td>";
+                            $table.="<td class='align-middle'>".$row["job_date"]."</td>";
+                            $table.="<td class='align-middle text-center'>".$row["job_hours"]."</td>";
+                            $table.='<td class="align-middle" ><button value="Edit" class="btn btn-block btn-sm" type="button" id="E'.$row["id"].'" data-action="edit">Edit Hours</button></td>';
+                            $table.='<td class="align-middle" ><button value="Delete" class="btn btn-danger btn-block btn-sm btn-sm" type="button" id="D'.$row["id"].'" data-action="delete">Delete Hours</button></td></tr>';
+                    }
+                    $table.='</tbody></table>';
+                    echo $table;
+                        }
+    }
+}
+
+function deleteTableRow($dataObj){
+
+
+    require_once '../classes/Pdo_methods.php';
+    
+    /*function console_log($data){
+            
+        echo '<script>';
+            echo 'console.log('.json_encode($data).')';
+            echo '</script>';}
+        
+        console_log($dataObj);*/
+
+        
+        $pdo = new PdoMethods();
+        
+        $sql = "DELETE FROM hour_log WHERE id=:id";
+
+
+	    $bindings = array(
+		array(':id',$dataObj->id,'int'),
+	    );
+
+        $records = $pdo->selectBinded($sql, $bindings);
+
+        if($result = 'noerror'){
+
+            $object = (object) [
+                'masterstatus' => 'success',
+                'msg' => 'Record Deleted'
+            ];
+            // viewHoursTable('getJobHourTable');
+
+            // echo json_encode($object);
+        }
+        else {
+            $object = (object) [
+                'masterstatus' => 'error',
+                'msg' => 'Could not delete record'
+            ];
+            // echo json_encode($object);
+        }
+        
+        
+
+
+        
+    
+
+}
+         
+
+
 
 ?>

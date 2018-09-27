@@ -13,13 +13,16 @@ $dataObj = json_decode($dataObj);
     echo '</script>';
   }
 
-  console_log($dataObj);*/
+  console_log($dataObj);
 
-
+// return*/
 
 switch($dataObj->flag){
-    case 'login':require '../controller/login.php'; login($dataObj); break;
-    case 'addViewHours':require '../controller/add_view_hours.php'; addHours($dataObj);break;
+
+    case 'login': require '../controller/login.php'; login($dataObj); break;
+    case 'addViewHours': require '../controller/add_view_hours.php'; addHours($dataObj); break;
+    case 'getJobHourTable': require '../controller/add_view_hours.php'; viewHoursTable($dataObj); break;
+    case 'deleteTableRow' : require '../controller/add_view_hours.php'; deleteTableRow($dataObj); break;
 }
 
 ?>

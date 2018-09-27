@@ -9,6 +9,70 @@ ac.init = function () {
         Util.addLis(Util.getEl('#addjobhoursBtn')[0], 'click', ac.addViewHours)
     }
 
+    if (Util.getEl('#addDeleteJobHours').length != 0) {
+
+        ac.jobHoursTable()
+
+        Util.addLis(Util.getEl('#addDeleteJobHours')[0], 'click', ac.editDeleteTable);
+
+    }
+
+
+
+}
+
+ac.editDeleteTable = function (e) {
+
+    var row = e.target.parentNode.parentNode.rowIndex;
+
+    // console.log(row);
+    e.preventDefault();
+
+    if (e.target.value == "Delete") {
+
+        var data = {};
+        data.id = e.target.id.substr(1);
+        Util.getEl('#editDeleteTable')[0].deleteRow(row)
+
+        data.flag = 'deleteTableRow';
+
+
+        console.log(data)
+
+        data = JSON.stringify(data);
+
+        Util.sendRequest('../xhr/routes.php', function (res) {
+
+            var response = JSON.parse(res.responseText);
+
+            console.log(response);
+
+        }, data)
+
+    }
+
+}
+
+ac.jobHoursTable = function () {
+
+    var data = {};
+    data.flag = 'getJobHourTable';
+
+    data = JSON.stringify(data);
+
+    Util.sendRequest('../xhr/routes.php', function (res) {
+
+        // var response = JSON.parse(res.responseText);
+        // Util.getEl('#addDeleteJobHours')[0].innerHTML = '';
+        Util.getEl('#addDeleteJobHours')[0].innerHTML = res.responseText;
+
+
+
+        // return;
+
+    }, data)
+
+
 }
 
 
@@ -54,9 +118,13 @@ ac.addViewHours = function () {
 
         gen.clearErrors();
 
-        var response = JSON.parse(res.responseText);
+        // var response = JSON.parse(res.responseText);
 
-        console.log(response)
+        Util.getEl('#addDeleteJobHours')[0].innerHTML = '';
+        Util.getEl('#addDeleteJobHours')[0].innerHTML = res.responseText;
+
+
+        gen.clearInputFields(Util.getEl('.form-control'));
 
     }, data)
 

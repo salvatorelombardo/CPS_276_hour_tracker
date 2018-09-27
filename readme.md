@@ -24,6 +24,21 @@ function(obj){
 }
 
 
+SENDING ERROR MESSAGES TO CONSOLE
+
+ function console_log( $data ){
+            
+            echo '<script>';
+                echo 'console.log('.json_encode($data).')';
+                echo '</script>';}
+            
+            console_log($records);
+            
+            }
+
+            return;
+
+
 
 skin project first - then write in js and backend
 attack css through classes

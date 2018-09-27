@@ -120,6 +120,15 @@ gen.clearErrors = function () {
     }
 }
 
+gen.clearInputFields = function (input) {
+
+    for (var i = 0; i < input.length; i++) {
+        console.log(input[i].value);
+        input[i].value = ''
+
+    }
+}
+
 
 /*gen.createErrorSpan = function(errorMsg){
 	var span;
